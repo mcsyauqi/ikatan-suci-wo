@@ -116,7 +116,7 @@ export default function PortfolioDetailPage({ params }: PortfolioDetailPageProps
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="font-script text-2xl text-[#C9A962] mb-2">Gallery</p>
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">Gallery</p>
             <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">
               Momen Indah
             </h2>
@@ -179,7 +179,7 @@ export default function PortfolioDetailPage({ params }: PortfolioDetailPageProps
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="font-script text-2xl text-[#C9A962] mb-2">
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">
               Portfolio Lainnya
             </p>
             <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">
@@ -224,7 +224,7 @@ export default function PortfolioDetailPage({ params }: PortfolioDetailPageProps
       {/* CTA */}
       <section className="py-16 bg-[#2C2C2C]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="font-script text-3xl text-[#C9A962] mb-4">
+          <p className="font-heading italic text-2xl text-[#C9A962] mb-4 tracking-wide">
             Ingin Kisah Seperti Ini?
           </p>
           <h2 className="font-heading text-3xl md:text-4xl text-white font-bold mb-6">

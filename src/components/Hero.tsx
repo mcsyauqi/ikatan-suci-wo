@@ -24,7 +24,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-script text-4xl md:text-5xl lg:text-6xl text-[#C9A962] mb-4"
+          className="font-heading italic text-3xl md:text-4xl lg:text-5xl text-[#C9A962] mb-4 tracking-wide"
         >
           Your Love Story Begins Here
         </motion.p>

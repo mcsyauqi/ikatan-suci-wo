@@ -24,7 +24,7 @@ export default function CTA() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-script text-4xl text-[#C9A962] mb-4"
+          className="font-heading italic text-3xl text-[#C9A962] mb-4 tracking-wide"
         >
           Ready to Begin?
         </motion.p>

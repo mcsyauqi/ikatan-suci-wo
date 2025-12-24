@@ -46,7 +46,7 @@ export default function Services() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="font-script text-3xl text-[#C9A962] mb-2">Layanan Kami</p>
+          <p className="font-heading italic text-2xl text-[#C9A962] mb-2 tracking-wide">Layanan Kami</p>
           <h2 className="font-heading text-4xl md:text-5xl text-[#2C2C2C] font-bold">
             Kami Siap Membantu
           </h2>

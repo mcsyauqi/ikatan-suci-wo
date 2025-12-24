@@ -70,7 +70,7 @@ export default function Packages() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="font-script text-3xl text-[#C9A962] mb-2">Paket Wedding</p>
+          <p className="font-heading italic text-2xl text-[#C9A962] mb-2 tracking-wide">Paket Wedding</p>
           <h2 className="font-heading text-4xl md:text-5xl text-[#2C2C2C] font-bold mb-4">
             Pilih Paket Terbaik Anda
           </h2>

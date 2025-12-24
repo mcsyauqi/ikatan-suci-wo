@@ -116,7 +116,7 @@ export default function PaketPage() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-script text-3xl text-[#C9A962] mb-2"
+            className="font-heading italic text-2xl text-[#C9A962] mb-2 tracking-wide"
           >
             Paket Wedding
           </motion.p>
@@ -248,7 +248,7 @@ export default function PaketPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="font-script text-2xl text-[#C9A962] mb-2">Tambahan</p>
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">Tambahan</p>
             <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">
               Add-ons & Upgrade
             </h2>
@@ -282,7 +282,7 @@ export default function PaketPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-script text-3xl text-[#C9A962] mb-4"
+            className="font-heading italic text-2xl text-[#C9A962] mb-4 tracking-wide"
           >
             Masih Bingung?
           </motion.p>

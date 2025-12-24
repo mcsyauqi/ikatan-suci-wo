@@ -39,7 +39,7 @@ export default function KontakPage() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-script text-3xl text-[#C9A962] mb-2"
+            className="font-heading italic text-2xl text-[#C9A962] mb-2 tracking-wide"
           >
             Hubungi Kami
           </motion.p>
@@ -358,7 +358,7 @@ export default function KontakPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="font-script text-2xl text-[#C9A962] mb-2">
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">
               Cabang Kami
             </p>
             <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">

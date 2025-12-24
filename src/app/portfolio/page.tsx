@@ -34,7 +34,7 @@ export default function PortfolioPage() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-script text-3xl text-[#C9A962] mb-2"
+            className="font-heading italic text-2xl text-[#C9A962] mb-2 tracking-wide"
           >
             Portfolio
           </motion.p>
@@ -183,7 +183,7 @@ export default function PortfolioPage() {
       {/* CTA */}
       <section className="py-16 bg-[#F5E6D3]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="font-script text-3xl text-[#C9A962] mb-4">
+          <p className="font-heading italic text-2xl text-[#C9A962] mb-4 tracking-wide">
             Ingin Kisah Anda Berikutnya?
           </p>
           <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold mb-6">
