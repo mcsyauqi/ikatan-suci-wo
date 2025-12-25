@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Check, Star, Crown, Gem, ArrowRight, Phone } from "lucide-react";
+import Image from "next/image";
+import { Check, Star, Crown, Gem, ArrowRight, Phone, Heart, Shield, Clock, Users, Sparkles, Gift, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const packages = [
@@ -99,12 +100,94 @@ const packages = [
 ];
 
 const addOns = [
-  { name: "Same Day Edit Video", price: "Rp 5.000.000" },
-  { name: "Photo Booth Premium", price: "Rp 3.500.000" },
-  { name: "Live Streaming", price: "Rp 2.500.000" },
-  { name: "Drone Videography", price: "Rp 4.000.000" },
-  { name: "MC Profesional", price: "Rp 5.000.000" },
-  { name: "Entertainment Upgrade", price: "Mulai Rp 10.000.000" },
+  { name: "Same Day Edit Video", price: "Rp 5.000.000", desc: "Video highlight siap tayang di resepsi" },
+  { name: "Photo Booth Premium", price: "Rp 3.500.000", desc: "Dengan props & unlimited prints" },
+  { name: "Live Streaming", price: "Rp 2.500.000", desc: "Multi-camera professional streaming" },
+  { name: "Drone Videography", price: "Rp 4.000.000", desc: "Aerial footage cinematic" },
+  { name: "MC Profesional", price: "Rp 5.000.000", desc: "Bilingual MC berpengalaman" },
+  { name: "Entertainment Upgrade", price: "Mulai Rp 10.000.000", desc: "Band, Orchestra, atau DJ" },
+  { name: "Bridal Car Decoration", price: "Rp 2.000.000", desc: "Dekorasi mobil pengantin premium" },
+  { name: "Fireworks Display", price: "Rp 8.000.000", desc: "Pertunjukan kembang api spektakuler" },
+];
+
+const comparisonFeatures = [
+  { feature: "Durasi Planning", sakral: "6 bulan", harmoni: "8 bulan", keabadian: "12 bulan" },
+  { feature: "Jumlah Vendor", sakral: "5 vendor", harmoni: "8 vendor", keabadian: "Unlimited" },
+  { feature: "Tim Coordinator", sakral: "3 orang", harmoni: "6 orang", keabadian: "8+ orang" },
+  { feature: "Vendor Meeting", sakral: "3x", harmoni: "Unlimited", keabadian: "Unlimited" },
+  { feature: "Rehearsal", sakral: false, harmoni: true, keabadian: true },
+  { feature: "Wedding Website", sakral: false, harmoni: true, keabadian: true },
+  { feature: "Honeymoon Planning", sakral: false, harmoni: true, keabadian: true },
+  { feature: "Multiple Events", sakral: false, harmoni: false, keabadian: true },
+  { feature: "Destination Wedding", sakral: false, harmoni: false, keabadian: true },
+  { feature: "24/7 Support", sakral: false, harmoni: false, keabadian: true },
+];
+
+const guarantees = [
+  {
+    icon: Shield,
+    title: "Garansi Kepuasan",
+    description: "Jika tidak puas dengan layanan kami, dapatkan refund hingga 50% dari biaya paket.",
+  },
+  {
+    icon: Clock,
+    title: "Tepat Waktu",
+    description: "Kami menjamin semua timeline berjalan sesuai jadwal yang telah disepakati.",
+  },
+  {
+    icon: Users,
+    title: "Tim Profesional",
+    description: "Wedding planner bersertifikat dengan pengalaman minimal 5 tahun.",
+  },
+  {
+    icon: Heart,
+    title: "Perhatian Personal",
+    description: "Setiap pasangan mendapat perhatian khusus sesuai kebutuhan unik mereka.",
+  },
+];
+
+const testimonials = [
+  {
+    quote: "Paket Harmoni sangat worth it! Semua kebutuhan wedding kami terpenuhi dengan sempurna.",
+    couple: "Rina & Dimas",
+    package: "Paket Harmoni",
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=100",
+  },
+  {
+    quote: "Dengan Paket Sakral, intimate wedding kami terasa sangat personal dan penuh makna.",
+    couple: "Ayu & Bram",
+    package: "Paket Sakral",
+    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=100",
+  },
+  {
+    quote: "Grand wedding dengan 800 tamu berjalan lancar tanpa hambatan. Tim yang luar biasa!",
+    couple: "Diana & Kevin",
+    package: "Paket Keabadian",
+    image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=100",
+  },
+];
+
+const faqs = [
+  {
+    q: "Apakah harga paket sudah final?",
+    a: "Harga yang tertera adalah harga dasar. Kami dapat menyesuaikan dengan kebutuhan dan budget Anda setelah konsultasi.",
+  },
+  {
+    q: "Bisakah saya upgrade paket di tengah persiapan?",
+    a: "Ya, Anda bisa upgrade paket kapan saja. Kami akan menghitung selisih biaya dan menyesuaikan layanan.",
+  },
+  {
+    q: "Apakah ada biaya tersembunyi?",
+    a: "Tidak ada. Semua biaya akan dijelaskan secara transparan di awal sebelum kontrak ditandatangani.",
+  },
+  {
+    q: "Bagaimana sistem pembayaran?",
+    a: "Pembayaran dapat dicicil: 30% saat booking, 40% di tengah persiapan, dan 30% sebelum hari H.",
+  },
+  {
+    q: "Apakah vendor sudah termasuk dalam paket?",
+    a: "Paket kami mencakup jasa wedding organizer. Biaya vendor (catering, dekorasi, dll) terpisah namun kami bantu negosiasi harga terbaik.",
+  },
 ];
 
 export default function PaketPage() {
@@ -132,11 +215,30 @@ export default function PaketPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-600 text-lg max-w-2xl mx-auto"
+            className="text-gray-600 text-lg max-w-2xl mx-auto mb-8"
           >
             Setiap paket dirancang khusus untuk memenuhi kebutuhan pernikahan Anda.
             Semua harga dapat disesuaikan dengan kebutuhan.
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-wrap justify-center gap-4"
+          >
+            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm">
+              <Check className="w-5 h-5 text-[#C9A962]" />
+              <span className="text-sm text-gray-600">Konsultasi Gratis</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm">
+              <Check className="w-5 h-5 text-[#C9A962]" />
+              <span className="text-sm text-gray-600">Harga Fleksibel</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm">
+              <Check className="w-5 h-5 text-[#C9A962]" />
+              <span className="text-sm text-gray-600">Garansi Kepuasan</span>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -239,21 +341,140 @@ export default function PaketPage() {
         </div>
       </section>
 
-      {/* Add-ons Section */}
+      {/* Comparison Table Section */}
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">Tambahan</p>
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">
+              Perbandingan
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">
+              Bandingkan Paket Kami
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="overflow-x-auto"
+          >
+            <table className="w-full">
+              <thead>
+                <tr className="border-b-2 border-[#C9A962]">
+                  <th className="text-left py-4 px-4 font-heading text-lg">Fitur</th>
+                  <th className="text-center py-4 px-4 font-heading text-lg">Sakral</th>
+                  <th className="text-center py-4 px-4 font-heading text-lg bg-[#F5E6D3] rounded-t-xl">Harmoni</th>
+                  <th className="text-center py-4 px-4 font-heading text-lg">Keabadian</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonFeatures.map((row, index) => (
+                  <tr key={row.feature} className={index % 2 === 0 ? "bg-gray-50" : ""}>
+                    <td className="py-4 px-4 text-gray-600">{row.feature}</td>
+                    <td className="text-center py-4 px-4">
+                      {typeof row.sakral === "boolean" ? (
+                        row.sakral ? (
+                          <Check className="w-5 h-5 text-[#C9A962] mx-auto" />
+                        ) : (
+                          <X className="w-5 h-5 text-gray-300 mx-auto" />
+                        )
+                      ) : (
+                        <span className="text-gray-600">{row.sakral}</span>
+                      )}
+                    </td>
+                    <td className="text-center py-4 px-4 bg-[#F5E6D3]/30">
+                      {typeof row.harmoni === "boolean" ? (
+                        row.harmoni ? (
+                          <Check className="w-5 h-5 text-[#C9A962] mx-auto" />
+                        ) : (
+                          <X className="w-5 h-5 text-gray-300 mx-auto" />
+                        )
+                      ) : (
+                        <span className="text-[#C9A962] font-medium">{row.harmoni}</span>
+                      )}
+                    </td>
+                    <td className="text-center py-4 px-4">
+                      {typeof row.keabadian === "boolean" ? (
+                        row.keabadian ? (
+                          <Check className="w-5 h-5 text-[#C9A962] mx-auto" />
+                        ) : (
+                          <X className="w-5 h-5 text-gray-300 mx-auto" />
+                        )
+                      ) : (
+                        <span className="text-gray-600">{row.keabadian}</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Guarantees Section */}
+      <section className="py-16 bg-[#F5E6D3]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">
+              Komitmen Kami
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">
+              Garansi di Setiap Paket
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {guarantees.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-6 text-center shadow-lg"
+              >
+                <div className="w-14 h-14 bg-[#C9A962] rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <item.icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="font-heading text-xl font-semibold text-[#2C2C2C] mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Add-ons Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">
+              Tambahan
+            </p>
             <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">
               Add-ons & Upgrade
             </h2>
-            <p className="text-gray-600 mt-4">
-              Tambahkan layanan berikut untuk pengalaman yang lebih istimewa.
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+              Tambahkan layanan berikut untuk pengalaman yang lebih istimewa dan tak terlupakan.
             </p>
           </motion.div>
 
@@ -265,10 +486,93 @@ export default function PaketPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="flex items-center justify-between p-4 bg-[#F5E6D3] rounded-xl"
+                className="flex items-center justify-between p-5 bg-[#FFFBF5] rounded-xl border border-gray-100 hover:border-[#C9A962] transition-colors"
               >
-                <span className="font-medium text-[#2C2C2C]">{addon.name}</span>
-                <span className="text-[#C9A962] font-semibold">{addon.price}</span>
+                <div>
+                  <h4 className="font-medium text-[#2C2C2C]">{addon.name}</h4>
+                  <p className="text-gray-500 text-sm">{addon.desc}</p>
+                </div>
+                <span className="text-[#C9A962] font-semibold whitespace-nowrap ml-4">{addon.price}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 bg-[#FFFBF5]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">
+              Testimoni
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">
+              Kata Mereka tentang Paket Kami
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.map((item, index) => (
+              <motion.div
+                key={item.couple}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-6 shadow-lg"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                    <Image src={item.image} alt={item.couple} fill className="object-cover" />
+                  </div>
+                  <div>
+                    <p className="font-heading font-semibold text-[#2C2C2C]">{item.couple}</p>
+                    <p className="text-[#C9A962] text-sm">{item.package}</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 italic">&ldquo;{item.quote}&rdquo;</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">
+              FAQ
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">
+              Pertanyaan Seputar Paket
+            </h2>
+          </motion.div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-[#F5E6D3] rounded-2xl p-6"
+              >
+                <h4 className="font-heading text-lg font-semibold text-[#2C2C2C] mb-2">
+                  {faq.q}
+                </h4>
+                <p className="text-gray-600">{faq.a}</p>
               </motion.div>
             ))}
           </div>
@@ -276,22 +580,27 @@ export default function PaketPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-[#2C2C2C]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 bg-[#2C2C2C] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-64 h-64 bg-[#C9A962] rounded-full -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#C9A962] rounded-full translate-x-1/2 translate-y-1/2" />
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="font-heading italic text-2xl text-[#C9A962] mb-4 tracking-wide"
           >
-            Masih Bingung?
+            Masih Bingung Memilih?
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-heading text-3xl md:text-4xl text-white font-bold mb-6"
+            className="font-heading text-3xl md:text-4xl lg:text-5xl text-white font-bold mb-6"
           >
             Konsultasikan dengan Tim Kami
           </motion.h2>
@@ -300,9 +609,9 @@ export default function PaketPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 mb-8 max-w-xl mx-auto"
+            className="text-gray-400 mb-8 max-w-xl mx-auto text-lg"
           >
-            Kami akan membantu Anda memilih paket yang tepat sesuai dengan kebutuhan dan budget pernikahan Anda.
+            Kami akan membantu Anda memilih paket yang tepat sesuai dengan kebutuhan, gaya, dan budget pernikahan Anda.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -315,14 +624,14 @@ export default function PaketPage() {
               href="/konsultasi"
               className="bg-[#C9A962] text-white px-8 py-4 rounded-full font-medium hover:bg-[#8B4513] transition-colors inline-flex items-center justify-center gap-2"
             >
-              Jadwalkan Konsultasi
+              Jadwalkan Konsultasi Gratis
               <ArrowRight className="w-5 h-5" />
             </Link>
             <a
               href="https://wa.me/6281234567890"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white/10 text-white px-8 py-4 rounded-full font-medium hover:bg-white/20 transition-colors inline-flex items-center justify-center gap-2"
+              className="bg-white/10 text-white px-8 py-4 rounded-full font-medium hover:bg-white/20 transition-colors inline-flex items-center justify-center gap-2 border border-white/20"
             >
               <Phone className="w-5 h-5" />
               WhatsApp Kami

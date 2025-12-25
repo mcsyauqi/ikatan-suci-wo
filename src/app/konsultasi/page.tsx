@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Clock, MapPin, Phone, Mail, CheckCircle, Send } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Calendar, Clock, MapPin, Phone, Mail, CheckCircle, Send, Star, Users, Heart, Shield, Award, MessageCircle, Video, Coffee } from "lucide-react";
 
 const timeSlots = [
   "09:00 - 10:00",
@@ -21,6 +23,94 @@ const weddingTypes = [
   "Destination Wedding",
   "Traditional Wedding",
   "Belum Yakin",
+];
+
+const consultationBenefits = [
+  {
+    icon: Coffee,
+    title: "Diskusi Santai",
+    description: "Ceritakan impian pernikahan Anda dalam suasana yang nyaman dan tidak terburu-buru.",
+  },
+  {
+    icon: Users,
+    title: "Tim Profesional",
+    description: "Langsung berdiskusi dengan wedding planner berpengalaman yang mengerti kebutuhan Anda.",
+  },
+  {
+    icon: Award,
+    title: "Rekomendasi Personal",
+    description: "Dapatkan saran paket dan vendor yang sesuai dengan budget dan gaya Anda.",
+  },
+  {
+    icon: Shield,
+    title: "Tanpa Komitmen",
+    description: "Konsultasi gratis tanpa ada kewajiban untuk langsung memesan layanan kami.",
+  },
+];
+
+const consultationSteps = [
+  {
+    step: 1,
+    title: "Isi Form",
+    description: "Lengkapi form konsultasi dengan informasi dasar tentang rencana pernikahan Anda.",
+  },
+  {
+    step: 2,
+    title: "Konfirmasi Jadwal",
+    description: "Tim kami akan menghubungi Anda dalam 1x24 jam untuk konfirmasi jadwal.",
+  },
+  {
+    step: 3,
+    title: "Sesi Konsultasi",
+    description: "Bertemu dengan wedding planner kami untuk diskusi mendalam.",
+  },
+  {
+    step: 4,
+    title: "Proposal",
+    description: "Terima proposal customized sesuai kebutuhan dan budget Anda.",
+  },
+];
+
+const consultationOptions = [
+  {
+    icon: MapPin,
+    title: "Tatap Muka",
+    description: "Kunjungi kantor kami di Jakarta atau Bali untuk konsultasi langsung.",
+    available: "Senin - Sabtu",
+  },
+  {
+    icon: Video,
+    title: "Video Call",
+    description: "Konsultasi online via Zoom atau Google Meet dari mana saja.",
+    available: "Fleksibel",
+  },
+  {
+    icon: MessageCircle,
+    title: "WhatsApp",
+    description: "Konsultasi cepat via chat untuk pertanyaan singkat.",
+    available: "24/7",
+  },
+];
+
+const clientTestimonials = [
+  {
+    name: "Anisa & Rendi",
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=200&h=200&fit=crop",
+    quote: "Konsultasi pertama dengan Ikatan Suci langsung membuat kami yakin. Tim mereka sangat memahami visi kami dan memberikan saran yang realistis.",
+    type: "Grand Wedding Jakarta",
+  },
+  {
+    name: "Diana & Kevin",
+    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=200&h=200&fit=crop",
+    quote: "Awalnya kami bingung mau mulai dari mana. Setelah konsultasi, semuanya jadi jelas dan terencana dengan baik.",
+    type: "Intimate Wedding Bali",
+  },
+  {
+    name: "Maya & Fajar",
+    image: "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=200&h=200&fit=crop",
+    quote: "Yang paling kami suka, tidak ada pressure untuk langsung deal. Mereka benar-benar mau membantu kami menemukan yang terbaik.",
+    type: "Traditional Wedding Jogja",
+  },
 ];
 
 export default function KonsultasiPage() {
@@ -74,15 +164,26 @@ export default function KonsultasiPage() {
             Permintaan konsultasi Anda telah kami terima. Tim kami akan menghubungi
             Anda dalam 1x24 jam untuk konfirmasi jadwal.
           </motion.p>
-          <motion.a
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            href="/"
-            className="inline-flex items-center gap-2 bg-[#C9A962] text-white px-8 py-4 rounded-full font-medium hover:bg-[#8B4513] transition-colors"
+            className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            Kembali ke Beranda
-          </motion.a>
+            <a
+              href="/"
+              className="inline-flex items-center justify-center gap-2 bg-[#C9A962] text-white px-8 py-4 rounded-full font-medium hover:bg-[#8B4513] transition-colors"
+            >
+              Kembali ke Beranda
+            </a>
+            <a
+              href="https://wa.me/6281234567890"
+              className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-8 py-4 rounded-full font-medium hover:bg-green-700 transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Chat WhatsApp
+            </a>
+          </motion.div>
         </div>
       </section>
     );
@@ -120,8 +221,160 @@ export default function KonsultasiPage() {
         </div>
       </section>
 
-      {/* Form Section */}
+      {/* Stats */}
+      <section className="py-8 bg-[#FFFBF5]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <p className="font-heading text-3xl text-[#C9A962] font-bold">500+</p>
+              <p className="text-gray-600 text-sm mt-1">Konsultasi/Tahun</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <p className="font-heading text-3xl text-[#C9A962] font-bold">95%</p>
+              <p className="text-gray-600 text-sm mt-1">Tingkat Kepuasan</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <p className="font-heading text-3xl text-[#C9A962] font-bold">45-60</p>
+              <p className="text-gray-600 text-sm mt-1">Menit Sesi</p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <p className="font-heading text-3xl text-[#C9A962] font-bold">100%</p>
+              <p className="text-gray-600 text-sm mt-1">Gratis</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Consultation Benefits */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">
+              Mengapa Konsultasi?
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">
+              Manfaat Konsultasi Bersama Kami
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {consultationBenefits.map((benefit, index) => (
+              <motion.div
+                key={benefit.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-[#F5E6D3] rounded-2xl p-6 text-center"
+              >
+                <div className="w-14 h-14 bg-[#C9A962] rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <benefit.icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="font-heading text-lg font-semibold text-[#2C2C2C] mb-2">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{benefit.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Consultation Options */}
       <section className="py-16 bg-[#FFFBF5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">
+              Pilihan Konsultasi
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">
+              Pilih Metode yang Nyaman untuk Anda
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {consultationOptions.map((option, index) => (
+              <motion.div
+                key={option.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div className="w-16 h-16 bg-[#C9A962] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <option.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-heading text-xl font-semibold text-[#2C2C2C] mb-2">
+                  {option.title}
+                </h3>
+                <p className="text-gray-600 mb-4">{option.description}</p>
+                <span className="inline-block bg-[#F5E6D3] text-[#8B4513] px-4 py-1 rounded-full text-sm font-medium">
+                  {option.available}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-16 bg-[#F5E6D3]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">
+              Proses Konsultasi
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">
+              Bagaimana Cara Kerjanya?
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {consultationSteps.map((item, index) => (
+              <motion.div
+                key={item.step}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="relative"
+              >
+                <div className="bg-white rounded-2xl p-6 text-center relative z-10">
+                  <div className="w-12 h-12 bg-[#C9A962] rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
+                    {item.step}
+                  </div>
+                  <h3 className="font-heading text-lg font-semibold text-[#2C2C2C] mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm">{item.description}</p>
+                </div>
+                {index < consultationSteps.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-[#C9A962]" />
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Form Section */}
+      <section className="py-16 bg-[#FFFBF5]" id="form">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Info */}
@@ -411,8 +664,61 @@ export default function KonsultasiPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* Testimonials */}
       <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="font-heading italic text-xl text-[#C9A962] mb-2 tracking-wide">
+              Testimoni
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl text-[#2C2C2C] font-bold">
+              Kata Mereka Tentang Konsultasi Kami
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {clientTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-[#F5E6D3] rounded-2xl p-8"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full overflow-hidden relative">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-script text-xl text-[#C9A962]">{testimonial.name}</p>
+                    <p className="text-[#8B4513] text-sm">{testimonial.type}</p>
+                  </div>
+                </div>
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-[#C9A962]" fill="#C9A962" />
+                  ))}
+                </div>
+                <p className="text-gray-600 italic">&ldquo;{testimonial.quote}&rdquo;</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-[#FFFBF5]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -444,6 +750,14 @@ export default function KonsultasiPage() {
                 q: "Kapan waktu terbaik untuk booking WO?",
                 a: "Idealnya 8-12 bulan sebelum hari H. Namun kami juga bisa membantu untuk timeline yang lebih singkat.",
               },
+              {
+                q: "Apa yang perlu saya siapkan untuk konsultasi?",
+                a: "Cukup siapkan gambaran umum tentang rencana pernikahan Anda: perkiraan tanggal, jumlah tamu, lokasi preferensi, dan budget. Tidak perlu detail lengkap.",
+              },
+              {
+                q: "Apakah pasangan harus ikut konsultasi?",
+                a: "Sangat direkomendasikan agar kedua belah pihak hadir, sehingga kami bisa memahami visi bersama Anda.",
+              },
             ].map((faq, index) => (
               <motion.div
                 key={index}
@@ -451,7 +765,7 @@ export default function KonsultasiPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-[#F5E6D3] rounded-2xl p-6"
+                className="bg-white rounded-2xl p-6 shadow-sm"
               >
                 <h4 className="font-heading text-lg font-semibold text-[#2C2C2C] mb-2">
                   {faq.q}
@@ -459,6 +773,38 @@ export default function KonsultasiPage() {
                 <p className="text-gray-600">{faq.a}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-[#2C2C2C]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Heart className="w-12 h-12 text-[#C9A962] mx-auto mb-6" fill="#C9A962" />
+          <p className="font-heading italic text-2xl text-[#C9A962] mb-4 tracking-wide">
+            Siap Memulai?
+          </p>
+          <h2 className="font-heading text-3xl md:text-4xl text-white font-bold mb-6">
+            Hubungi Kami Sekarang
+          </h2>
+          <p className="text-gray-400 mb-8 max-w-xl mx-auto">
+            Jangan ragu untuk menghubungi kami. Setiap kisah cinta layak diceritakan
+            dengan indah.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#form"
+              className="inline-flex items-center justify-center gap-2 bg-[#C9A962] text-white px-8 py-4 rounded-full font-medium hover:bg-[#8B4513] transition-colors"
+            >
+              Isi Form Konsultasi
+            </a>
+            <a
+              href="https://wa.me/6281234567890"
+              className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-[#2C2C2C] transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Chat WhatsApp
+            </a>
           </div>
         </div>
       </section>
